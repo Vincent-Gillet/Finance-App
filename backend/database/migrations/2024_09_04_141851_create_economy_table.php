@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('description');
-            $table->int('economy_money');
+            $table->integer('economy_money');
         });
     }
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description');
-            $table->int('goal_money');
-            $table->int('state_money');
+            $table->integer('goal_money');
+            $table->integer('state_money');
         });
     }
 
