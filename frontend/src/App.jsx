@@ -1,33 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Route, Routes } from 'react-router-dom';
+
+import Login from './pages/login';
+import Subscribe from './pages/subscribe';
+import Dashboard from './pages/dashboard';
+
+import Projects from './pages/projects';
+import PostProject from './pages/project/post';
+import GetProject from './pages/project/get';
+import EditProject from './pages/project/edit';
+import DeleteProject from './pages/project/delete';
+
+import Users from './pages/users';
+import PostUser from './pages/user/post';
+import GetUser from './pages/user/get';
+import EditUser from './pages/user/edit';
+import DeleteUser from './pages/user/delete';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/subscribe" element={<Subscribe />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/new" element={<PostProject />} />
+        <Route path="/projects/:id" element={<GetProject />} />
+        <Route path="/projects/:id/edit" element={<EditProject />} />
+        <Route path="/projects/:id/delete" element={<DeleteProject />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/users/new" element={<PostUser />} />
+        <Route path="/users/:id" element={<GetUser />} />
+        <Route path="/users/:id/edit" element={<EditUser />} />
+        <Route path="/users/:id/delete" element={<DeleteUser />} />
+
+      </Routes>
     </>
   )
 }
