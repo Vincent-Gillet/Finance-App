@@ -30,6 +30,8 @@ class UserController extends Controller
         ]);
     }
 
+    
+
     public function delete(Request $request): RedirectResponse {
 
         $user = $request->project();
