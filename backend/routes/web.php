@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EconomyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +31,14 @@ Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name
 Route::patch('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
 Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
+
+Route::get('/economies', [EconomyController::class, 'index'])->name('economies.index');
+Route::get('/economy/create', [EconomyController::class, 'create'])->name('economies.create');
+Route::post('/economies', [EconomyController::class, 'store'])->name('economies.store');
+Route::get('/economies/{economy}', [EconomyController::class, 'show'])->name('economies.show');
+Route::get('/economies/{economy}/edit', [EconomyController::class, 'edit'])->name('economies.edit');
+Route::patch('/economies/{economy}', [EconomyController::class, 'update'])->name('economies.update');
+Route::delete('/economies/{economy}', [EconomyController::class, 'destroy'])->name('economies.destroy');
 
 
 require __DIR__.'/auth.php';

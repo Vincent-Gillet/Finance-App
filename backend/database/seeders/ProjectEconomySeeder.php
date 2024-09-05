@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ProjectEconomy;
 
 class ProjectEconomySeeder extends Seeder
 {
@@ -13,9 +13,11 @@ class ProjectEconomySeeder extends Seeder
     public function run(): void
     {
         ProjectEconomy::factory()->create([
-            'projet_id' => 'Test User',
-            'economy_id' => 'Test User',
+            'project_id' => 1,
+            'economy_id' => 1,
             'date' => '2024-09-04',
         ]);
     }
+
+    
 }

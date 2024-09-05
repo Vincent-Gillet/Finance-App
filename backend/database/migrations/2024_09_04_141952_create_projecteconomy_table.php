@@ -9,20 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('projecteconomy', function (Blueprint $table) {
+        Schema::create('project_economies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->date('date');
+            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+            $table->foreignId('economy_id')->constrained('economies')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('projecteconomy');
+        Schema::dropIfExists('project_economies');
     }
 };

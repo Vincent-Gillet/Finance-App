@@ -9,21 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('economy', function (Blueprint $table) {
+        Schema::create('economies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('title');
             $table->string('description');
             $table->integer('economy_money');
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('economy');
+        Schema::dropIfExists('economies');
     }
 };

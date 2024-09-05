@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -29,22 +30,32 @@ class ProjectController extends Controller
         return ('project.create');
     }
 
-    public function store (Request $request): RedirectResponse 
+    public function store(Request $request): RedirectResponse 
     {
-        
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'goal_money' => 'required|numeric',
+            'state_money' => 'required|numeric',
+        ]);
+
+        $project = new Project($validated);
+        $project->user_id = $request->user()->id;
+        $project->save();
+
+        return Redirect::to('/projects');
     }
     
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
+        return view('project.edit', [
+            'project' => $request->project(),
         ]);
     }
 
-    public function delete(Request $request): RedirectResponse {
-
+    public function delete(Request $request): RedirectResponse 
+    {
         $project = $request->project();
-
         $project->delete();
 
         return Redirect::to('/projects');

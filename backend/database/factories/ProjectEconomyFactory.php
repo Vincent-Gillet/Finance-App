@@ -17,10 +17,9 @@ class ProjectEconomyFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->name(),
-            'projet_id'=> random_int(0, 10),
+            'project_id'=> random_int(0, 10),
             'economy_id' => random_int(100, 1000),
-            'date' => date('Y-m-d H:i:s'),
+            'date' => $this->faker->date(),
         ];
     }
 }
