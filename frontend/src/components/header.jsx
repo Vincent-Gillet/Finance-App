@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/components/header.css";
+import "../App.css";
 
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
