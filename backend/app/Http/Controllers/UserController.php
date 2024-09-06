@@ -3,42 +3,61 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index (Resquest $resquest) : View {
-        return view('user.index', [
-            'users' => $request->user()->users,
-        ]);
-    }
 
-    public function show (Request $request) : View {
-        return view(('user.show'), [
-            'user' => $request->user(),
-        ]);
-    }
-
-
-    public function edit(Request $request): View
+    public function index (): JsonResponse
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
+        $users = User::all();
+
+        return response()->json([
+            'users' => $users,
         ]);
+    }
+
+    public function show($id): JsonResponse
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'user' => $user,
+        ]);
+    }
+
+    public function edit($id): View
+    {
+
     }
 
     
 
-    public function delete(Request $request): RedirectResponse {
+    public function delete($id): JsonResponse {
 
-        $user = $request->project();
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
 
         $user->delete();
 
-        return Redirect::to('/users');
+        return response()->json([
+            'message' => 'User deleted successfully',
+        ]);
     }
 
 }
