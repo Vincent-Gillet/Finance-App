@@ -4,11 +4,22 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: #f0f0f0;
+  height: 100%;
 }
 
-p, h1, h2, h3, h4, h5, h6, a, button {
+p, h1, h2, h3, h4, h5, h6, a, button, label, input {
   margin: 0;
   font-family: Poppins;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 #root {
@@ -16,4 +27,40 @@ p, h1, h2, h3, h4, h5, h6, a, button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* height: 100vh; */
+  row-gap: 20px;
+}
+
+button, .button_main {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #00BD9A;
+  color: 000;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid #00BD9A;
+  width: max-content;
+  font-size: 14px;
+
+}
+
+button:hover, .button_main:hover {
+  background-color: white;
+  color: #00BD9A;
+}
+
+canvas {
+  max-height: 300px;
+  max-width: 300px;
+  width: 100%;
+  height: 100%;
 }

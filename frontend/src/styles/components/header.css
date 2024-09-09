@@ -1,9 +1,10 @@
 header {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-
+    padding: 20px 40px;
+    box-sizing: border-box;
 
 }
 
@@ -14,6 +15,78 @@ header img {
 header a {
     text-decoration: none;
     color: black;
-    font-size: 1.5rem;
+    font-size: 18px;
     margin: 0 1rem;
 }
+
+
+/* Style pour le bouton de menu burger */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Style pour les liens du menu */
+.bm-item {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+}
+
+.bm-item:hover {
+    color: white;
+}
+
+/* Style pour le menu */
+.bm-menu {
+    background: white;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+.bm-menu a {
+    margin: 0;
+}
+
+/* Style pour l'overlay */
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.bm-menu-wrap {
+    top: 0;
+
+}
+
+.bm-item-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: 100%;
+}
+
+.bm-cross-button {
+    background-color: #00BD9A;
+    border-radius: 5px;
+}
+
+.bm-cross {
+    background-color: white;
+}
+
+#react-burger-menu-btn {
+    width: 0% !important;
+    height: 0% !important;
+}
+

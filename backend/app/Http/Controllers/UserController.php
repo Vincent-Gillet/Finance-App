@@ -36,11 +36,46 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit($id): View
+    public function edit($id): JsonResponse
     {
+        $user = User::find($id);
 
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'message' => 'User edit form',
+            'user' => $user,
+        ]);
     }
 
+    public function update(Request $request, $id): JsonResponse
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+        ]);
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->save();
+
+        return response()->json([
+            'message' => 'User updated successfully',
+            'user' => $user,
+        ]);
+    }
     
 
     public function delete($id): JsonResponse {
@@ -53,6 +88,7 @@ class UserController extends Controller
             ], 404);
         }
 
+        $user->tokens()->delete();
         $user->delete();
 
         return response()->json([

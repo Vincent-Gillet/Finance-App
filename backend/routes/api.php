@@ -4,20 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::get('/', function () {
-    return 'API';
-});
-
-
+use App\Http\Controllers\ProjectController;
 
 
 Route::group(['prefix' => 'auth'], function () {
@@ -31,30 +18,17 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
-
-
         Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
 
-        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-
-
-
-        //     Route::post('logout', [AuthController::class, 'logout']);
-        //     Route::get('user', [AuthController::class, 'user']);
+        Route::delete('/users/{id}', [UserController::class, 'delete'])->name('users.delete');
 
 
-    //         Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    //         Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    //         Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-    //         Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    //         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-
-
-    //         // Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-    //         // Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
-    //         // Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
-    //         // Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-    //         // Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+        Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+        Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+        Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+        Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+        Route::delete('/projects/{id}', [ProjectController::class, 'delete'])->name('projects.delete');
 
 
     //         // Route::get('/economies', [EconomyController::class, 'index'])->name('economies.index');

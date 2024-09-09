@@ -1,0 +1,27 @@
+.form_project {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #00BD9A;
+    align-items: center;
+    box-sizing: border-box;
+    width: max-content;
+}
+
+.form_box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form_box input, textarea {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 250px;
+    width: 100%;
+    resize: none;
+}

@@ -1,0 +1,15 @@
+.container_card {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* width: 100%; */
+    max-width: 670px;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #00BD9A;
+    gap: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+}

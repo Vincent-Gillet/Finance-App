@@ -1,0 +1,35 @@
+.subscribe form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #00BD9A;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.subscribe form h1 {
+    color: #FFF;
+    
+}
+
+.subscribe form input {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.subscribe form button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.subscribe form button:hover {
+    background-color: #00BD9A;
+    color: #FFF;
+}
