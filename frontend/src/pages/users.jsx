@@ -21,7 +21,7 @@ function Users() {
             }
 
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/auth/users', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -43,7 +43,7 @@ function Users() {
     const handleDelete = async (userId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/auth/users/${userId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/auth/users/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -56,7 +56,7 @@ function Users() {
     };
 
     const handleEdit = (userId) => {
-        navigate(`/users/${userId}`); // Rediriger vers la page GetUser avec l'ID de l'utilisateur
+        navigate(`/users/${userId}`);
     };
 
     return (

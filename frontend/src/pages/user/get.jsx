@@ -7,14 +7,14 @@ function GetUser() {
     const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const user_id = localStorage.getItem('user_id'); // Extraire l'ID de l'utilisateur du localStorage
-    const navigate = useNavigate(); // Initialiser useNavigate
-    console.log('User ID:', user_id); // Ajouter un log pour vérifier l'ID de l'utilisateur
+    const user_id = localStorage.getItem('user_id');
+    const navigate = useNavigate();
+    console.log('User ID:', user_id);
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/auth/users/${user_id}`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/users/${user_id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('token')}` // Ajouter le token si nécessaire
@@ -41,7 +41,7 @@ function GetUser() {
 
     const handleSave = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/auth/users/${user_id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/users/${user_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ function GetUser() {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/auth/users/${user_id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/users/${user_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

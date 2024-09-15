@@ -7,7 +7,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const navigate = useNavigate(); // Initialiser useNavigate
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,24 +15,26 @@ function Login() {
         setSuccess('');
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/login', {
+            // console.log('API URL:', process.env.REACT_APP_API_URL); // Ajoutez ceci pour vérifier
+
+            const response = await axios.post(`http://127.0.0.1:8000/api/auth/login`, {
                 email,
                 password
             });
 
-            console.log('Response:', response); // Afficher la réponse complète dans la console
+            console.log('Response:', response);
 
             const token = response.data.accessToken;
-            const userId = response.data.user_id; // Utiliser la bonne propriété pour l'ID de l'utilisateur
+            const userId = response.data.user_id; 
 
-            console.log('Token:', token); // Afficher le token dans la console pour vérification
-            console.log('User ID:', userId); // Afficher l'ID de l'utilisateur dans la console pour vérification
+            console.log('Token:', token);
+            console.log('User ID:', userId);
 
             if (token && userId) {
-                localStorage.setItem('token', token); // Stocker le token dans localStorage
-                localStorage.setItem('user_id', userId); // Stocker l'ID de l'utilisateur dans localStorage
+                localStorage.setItem('token', token);
+                localStorage.setItem('user_id', userId);
                 setSuccess('Connexion avec succès !');
-                navigate('/dashboard'); // Rediriger vers la page dashboard
+                navigate('/dashboard');
             } else {
                 setError('Token ou ID utilisateur non trouvé dans la réponse.');
             }
@@ -53,14 +55,14 @@ function Login() {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        autoComplete="email" // Ajout de l'attribut autocomplete
+                        autoComplete="email"
                     />
                     <input
                         type="password"
                         placeholder="Mot de passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        autoComplete="current-password" // Ajout de l'attribut autocomplete
+                        autoComplete="current-password"
                     />
                     <button type="submit">Connexion</button>
                     <p>Vous n'avez pas de compte ? <a href="/subscribe">Inscrivez-vous</a></p>

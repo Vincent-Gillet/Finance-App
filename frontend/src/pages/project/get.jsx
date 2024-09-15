@@ -18,7 +18,7 @@ function GetProject() {
             }
 
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/auth/projects/${id}`, { 
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/projects/${id}`, { 
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

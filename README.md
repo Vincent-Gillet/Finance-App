@@ -40,3 +40,9 @@ php artisan serve
 ```bash
 npm run dev 
 ``` 
+
+### Documentation 
+
+#### Swagger
+
+Accéder aux swagger avec le lien suivant : http://127.0.0.1:8000/api/documentation

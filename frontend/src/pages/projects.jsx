@@ -9,14 +9,14 @@ function Projects() {
 
     useEffect(() => {
         const fetchProjects = async () => {
-            const token = localStorage.getItem('token'); // Récupérer le token depuis localStorage
+            const token = localStorage.getItem('token');
             if (!token) {
                 setError('Vous devez être connecté pour accéder à cette page.');
                 return;
             }
 
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/auth/projects', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/projects`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -42,7 +42,7 @@ function Projects() {
         }
 
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/api/auth/projects/${projectId}`, {
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/auth/projects/${projectId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

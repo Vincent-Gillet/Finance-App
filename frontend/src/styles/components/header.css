@@ -90,3 +90,6 @@ header a {
     height: 0% !important;
 }
 
+.bm-burger-bars {
+    display: none;
+}
