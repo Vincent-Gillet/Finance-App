@@ -9,18 +9,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 
-/**
- * @OA\Info(
- *     title="API Documentation",
- *     version="1.0.0"
- * )
- * @OA\SecurityScheme(
- *     securityScheme="bearerAuth",
- *     type="http",
- *     scheme="bearer",
- *     bearerFormat="JWT"
- * )
- */
 class UserController extends Controller
 {
     // public function __construct()
